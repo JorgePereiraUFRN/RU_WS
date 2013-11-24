@@ -18,7 +18,7 @@ import br.ufrn.ru_ufrn.model.ResultadoAvItem;
 import br.ufrn.ru_ufrn.model.ResultadoAvaliacoes;
 
 
-@Path("cardapio")
+@Path("avaliacao")
 public class AvaliacaoResource {
 	
 	private static AvaliacaoController avController = new AvaliacaoMock();

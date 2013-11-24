@@ -143,7 +143,8 @@ public class AvaliacaoMock implements AvaliacaoController{
 		Iterator<Avaliacao> avs = avaliacoes.values().iterator();
 		
 		ResultadoAvaliacoes result = new ResultadoAvaliacoes();
-		result.setData(new Date(data));
+		String dt[] = data.split("-");
+		result.setData(new Date(Integer.parseInt(dt[0]), Integer.parseInt(dt[1]), Integer.parseInt(dt[2])));
 		result.setDesgostaram(0);
 		result.setGostaram(0);
 		result.setIndiferente(0);
