@@ -13,6 +13,7 @@ public class Avaliacao {
 	private Integer idAvaliacao;
 	private Integer idRefeicao;
 	private Long idUsuario;
+	private String refeicao;
 	
 	public Avaliacao(){
 		this.id = -1;
@@ -28,6 +29,14 @@ public class Avaliacao {
 
 	
 	
+
+	public String getRefeicao() {
+		return refeicao;
+	}
+
+	public void setRefeicao(String refeicao) {
+		this.refeicao = refeicao;
+	}
 
 	public Integer getId() {
 		return id;

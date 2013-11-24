@@ -11,8 +11,41 @@ public class ResultadoAvaliacoes {
 	private int gostaram;
 	private int desgostaram;
 	private int indiferente;
+	private int cardapioCumprido;
+	private int cardapioDescumprido;
 	private int totaVotos;
 	private Date data;
+	private String refeicao;
+	
+	
+	
+	public int getCardapioCumprido() {
+		return cardapioCumprido;
+	}
+
+	public void setCardapioCumprido(int cardapioCumprido) {
+		this.cardapioCumprido = cardapioCumprido;
+	}
+
+	public int getCardapioDescumprido() {
+		return cardapioDescumprido;
+	}
+
+	public void setCardapioDescumprido(int cardapioDescumprido) {
+		this.cardapioDescumprido = cardapioDescumprido;
+	}
+
+	public String getRefeicao() {
+		return refeicao;
+	}
+
+	public void setRefeicao(String refeicao) {
+		this.refeicao = refeicao;
+	}
+
+	public ResultadoAvaliacoes(){
+		
+	}
 
 	public Date getData() {
 		return data;

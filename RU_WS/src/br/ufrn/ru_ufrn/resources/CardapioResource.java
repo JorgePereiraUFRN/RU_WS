@@ -6,11 +6,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import br.ufrn.ru_ufrn.controllers.ComentarioController;
+import br.ufrn.ru_ufrn.mock.ComentarioMock;
 import br.ufrn.ru_ufrn.model.Alimento;
 
 @Path("cardapio")
 public class CardapioResource {
 
+	
+	
 	@GET
 	public String publish() {
 		return "Estou funcionando";

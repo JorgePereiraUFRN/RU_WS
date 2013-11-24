@@ -10,6 +10,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import br.ufrn.ru_ufrn.controllers.AvaliacaoController;
+import br.ufrn.ru_ufrn.mock.AvaliacaoMock;
 import br.ufrn.ru_ufrn.model.Avaliacao;
 import br.ufrn.ru_ufrn.model.AvaliacaoItem;
 import br.ufrn.ru_ufrn.model.ResultadoAvItem;
@@ -19,13 +21,15 @@ import br.ufrn.ru_ufrn.model.ResultadoAvaliacoes;
 @Path("cardapio")
 public class AvaliacaoResource {
 	
+	private static AvaliacaoController avController = new AvaliacaoMock();
+	
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("avaliacao-cardapio/{idRefeicao}/{data}/{idUser}")
-	public Avaliacao getavaliacao(@PathParam("data") String data, @PathParam("refeicao") int idRefeicao,
+	@Path("avaliacao-cardapio/{refeicao}/{data}/{idUser}")
+	public Avaliacao getavaliacao(@PathParam("data") String data, @PathParam("refeicao") String refeicao,
 			@PathParam("idUser") int idUser){
-		Avaliacao avaliacao = null;
+		Avaliacao avaliacao = avController.getavaliacao(data, refeicao, idUser);
 		
 		return avaliacao;
 	}
@@ -46,6 +50,8 @@ public class AvaliacaoResource {
 	@Path("avaliar-cardapio")
 	public void avaliarCardapio(Avaliacao avaliacao){
 		
+		avController.avaliarCardapio(avaliacao);
+		
 	}
 	
 	
@@ -54,6 +60,7 @@ public class AvaliacaoResource {
 	@Path("avaliar-item")
 	public void avaliarItem(AvaliacaoItem avItem){
 		
+		avController.avaliarItem(avItem);
 		
 	}
 	
@@ -62,8 +69,9 @@ public class AvaliacaoResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/atualizar-av-cardapio")
 	public void atualizaAvCardapio(Avaliacao avaliacao,  @QueryParam("idUser") int idUser, 
-			@QueryParam("idRefeicao") int idRefeicao, @QueryParam("data")String data){
+			@QueryParam("refeicao") String refeicao, @QueryParam("data")String data){
 		
+		avController.atualizaAvCardapio(avaliacao, idUser, refeicao, data);
 	}
 	
 	
@@ -71,17 +79,20 @@ public class AvaliacaoResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/atualizar-av-item")
 	public void atualizarAVItem(AvaliacaoItem avItem , @QueryParam("idUser") int idUser, 
-			@QueryParam("idRefeicao") int idRefeicao, @QueryParam("data")String data, 
+			@QueryParam("refeicao") String refeicao, @QueryParam("data")String data, 
 			@QueryParam("item") String item){
+		
+		avController.atualizarAVItem(avItem, idUser, refeicao, data, item);
 		
 	}
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/resultados-avaliacoes")
-	public ResultadoAvaliacoes resultadoAvaliacoes(@QueryParam("idRefeicao") int idRefeicao, 
+	public ResultadoAvaliacoes resultadoAvaliacoes(@QueryParam("refeicao") String refeicao, 
 			@QueryParam("data") String data ){
-		ResultadoAvaliacoes resAvaliacoes = null;
+		
+		ResultadoAvaliacoes resAvaliacoes = avController.resultadoAvaliacoes(refeicao, data);
 		
 		return resAvaliacoes;
 	}
@@ -90,10 +101,10 @@ public class AvaliacaoResource {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/resultados-av-itens")
-	public ResultadoAvItem[] getresultadoAvItem(@QueryParam("idRefeicao") int idRefeicao, 
+	public ResultadoAvItem[] getresultadoAvItem(@QueryParam("refeicao") String refeicao, 
 			@QueryParam("data") String data ){
 		
-		ResultadoAvItem avItens[] = null;
+		ResultadoAvItem avItens[] = avController.getresultadoAvItem(refeicao, data);
 		
 		return avItens;
 	}

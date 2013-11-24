@@ -8,7 +8,7 @@ import br.ufrn.ru_ufrn.model.ResultadoAvaliacoes;
 public interface AvaliacaoController {
 	
 
-	public Avaliacao getavaliacao( String data, int idRefeicao, int idUser);
+	public Avaliacao getavaliacao( String data, String refeicao, int idUser);
 	
 	//public AvaliacaoItem getAvItem(String data,  int idRefeicao, String item);
 	
@@ -16,12 +16,12 @@ public interface AvaliacaoController {
 	
 	public void avaliarItem(AvaliacaoItem avItem);
 	
-	public void atualizaAvCardapio(Avaliacao avaliacao, int idUser, int idRefeicao,String data);
+	public void atualizaAvCardapio(Avaliacao avaliacao, int idUser, String refeicao,String data);
 	
-	public void atualizarAVItem(AvaliacaoItem avItem ,int idUser, int idRefeicao,String data, String item);
+	public void atualizarAVItem(AvaliacaoItem avItem ,int idUser, String refeicao,String data, String item);
 	
-	public ResultadoAvaliacoes resultadoAvaliacoes(int idRefeicao, String data );
+	public ResultadoAvaliacoes resultadoAvaliacoes(String refeicao, String data );
 	
-	public ResultadoAvItem[] getresultadoAvItem(int idRefeicao, String data );
+	public ResultadoAvItem[] getresultadoAvItem(String refeicao, String data );
 
 }
