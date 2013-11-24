@@ -8,9 +8,9 @@ import br.ufrn.ru_ufrn.model.ResultadoAvaliacoes;
 public interface AvaliacaoController {
 	
 
-	public Avaliacao getavaliacao( String data, int idRefeicao);
+	public Avaliacao getavaliacao( String data, int idRefeicao, int idUser);
 	
-	public AvaliacaoItem getAvItem(String data,  int idRefeicao, String item);
+	//public AvaliacaoItem getAvItem(String data,  int idRefeicao, String item);
 	
 	public void avaliarCardapio(Avaliacao avaliacao);
 	

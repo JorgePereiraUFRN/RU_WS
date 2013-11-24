@@ -22,14 +22,15 @@ public class AvaliacaoResource {
 	
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
-	@Path("avaliacao-cardapio/{idRefeicao}/{data}")
-	public Avaliacao getavaliacao(@PathParam("data") String data, @PathParam("refeicao") int idRefeicao){
+	@Path("avaliacao-cardapio/{idRefeicao}/{data}/{idUser}")
+	public Avaliacao getavaliacao(@PathParam("data") String data, @PathParam("refeicao") int idRefeicao,
+			@PathParam("idUser") int idUser){
 		Avaliacao avaliacao = null;
 		
 		return avaliacao;
 	}
 	
-	@GET
+/*	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("avaliacao-item/{idRefeicao}/{data}/{item}")
 	public AvaliacaoItem getAvItem(@PathParam("data") String data, @PathParam("refeicao") int idRefeicao,
@@ -38,7 +39,7 @@ public class AvaliacaoResource {
 		
 		
 		return avitem;
-	}
+	}*/
 	
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
