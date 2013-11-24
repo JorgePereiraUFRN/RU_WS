@@ -1,6 +1,9 @@
 *.class
 
 # Package Files #
+<<<<<<< HEAD
 #*.jar
+=======
+>>>>>>> 3334b5991518a6097c8d2aa2cbd32f983d413b44
 *.war
 *.ear
