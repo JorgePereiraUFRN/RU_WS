@@ -1,5 +1,6 @@
 package br.ufrn.ru_ufrn.model;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -90,6 +91,24 @@ public class ResultadoAvItem {
 		this.refeicao = refeicao;
 	}
 	
+	public String getDataFormatoAmericano() {
+		return (data.getYear()+1900)+"-"+(data.getMonth()+1)+"-"+data.getDate();
+	}
+	
+	public void setData(String dataFormatoamericano){
+		
+		String d[] = dataFormatoamericano.split("-");
+		int ano = Integer.parseInt(d[0]);
+		int mes = Integer.parseInt(d[1]) - 1;
+		int dia = Integer.parseInt(d[2]);
+		
+		
+		Calendar calendar = Calendar.getInstance();
+		
+		calendar.set(ano, mes , dia);
+		
+		this.data = calendar.getTime();
+	}
 	
 
 }

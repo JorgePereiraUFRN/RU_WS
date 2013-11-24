@@ -29,7 +29,7 @@ public class AvaliacaoMock implements AvaliacaoController{
 		
 		Avaliacao av1 = new Avaliacao();
 		av1.setCardapioCumprido(false);
-		av1.setData(new Date());
+		av1.setData(new Date(System.currentTimeMillis()));
 		av1.setId(0);
 		av1.setIdAvaliacao(2);
 		av1.setIdRefeicao(2);
@@ -40,7 +40,7 @@ public class AvaliacaoMock implements AvaliacaoController{
 		
 		
 		AvaliacaoItem avi = new AvaliacaoItem();
-		avi.setData(new Date());
+		avi.setData(new Date(System.currentTimeMillis()));
 		avi.setIdAvaliacao(1L);
 		avi.setIdUsuario(1L);
 		avi.setItem("frango seco");
@@ -143,8 +143,8 @@ public class AvaliacaoMock implements AvaliacaoController{
 		Iterator<Avaliacao> avs = avaliacoes.values().iterator();
 		
 		ResultadoAvaliacoes result = new ResultadoAvaliacoes();
-		String dt[] = data.split("-");
-		result.setData(new Date(Integer.parseInt(dt[0]), Integer.parseInt(dt[1]), Integer.parseInt(dt[2])));
+
+		result.setData(data);
 		result.setDesgostaram(0);
 		result.setGostaram(0);
 		result.setIndiferente(0);
