@@ -8,7 +8,9 @@ import javax.ws.rs.core.MediaType;
 
 import br.ufrn.ru_ufrn.controllers.ComentarioController;
 import br.ufrn.ru_ufrn.mock.ComentarioMock;
+import br.ufrn.ru_ufrn.mock.MockCardapio;
 import br.ufrn.ru_ufrn.model.Alimento;
+import br.ufrn.ru_ufrn.model.Cardapio;
 
 @Path("cardapio")
 public class CardapioResource {
@@ -21,16 +23,11 @@ public class CardapioResource {
 	}
 	
 	@GET
-	@Path("/alimento")
+	@Path("hoje")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Alimento getAlimento() {
-		Alimento teste = new Alimento();
+	public Cardapio cardapioDoDia() {
 		
-		teste.setId(0);
-		teste.setImagem("imagem");
-		teste.setNome("nome");
-		teste.setDescricao("descricao");
-		return teste;
+		return MockCardapio.mock();
 	}
 	
 
