@@ -91,7 +91,7 @@ public class MockCardapio {
 
 		c.setJantaCarnivora(refeicao);
 
-		c.setData(new java.sql.Date(System.currentTimeMillis()));
+		c.setData(new java.sql.Date(System.currentTimeMillis()).toString());
 
 		
 		return c;
