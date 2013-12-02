@@ -5,11 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.*;
 
+import org.json.JSONObject;
+
 import com.google.gson.Gson;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.WebResource;
 
 import br.ufrn.ru_ufrn.model.Cardapio;
+import br.ufrn.ru_ufrn.model.Refeicao;
  
 
 public class CardapioClientService {
@@ -47,7 +50,17 @@ public class CardapioClientService {
 			Gson gson = new Gson();			
 			cardapio = gson.fromJson(sb.toString(), Cardapio.class);
 			
+			/*cardapio = (Cardapio) JSONObject.toBean(JSONObject.fromObject(sb), Cardapio.class);
 			
+			JSONObject json_obj = new JSONObject(sb);
+			
+			cardapio = new Cardapio();
+			cardapio.setCafeDaManha((Refeicao) json_obj.get("cafeDaManha"));
+			cardapio.setAlmocoCarnivoro((Refeicao) json_obj.get("almocoCarnivoro"));
+			cardapio.setAlmocoVegetariano((Refeicao) json_obj.get("almocoVegetariano"));
+			cardapio.setJantaVegetariana((Refeicao) json_obj.get("jantaVegetariana"));
+			cardapio.setJantaCarnivora((Refeicao) json_obj.get("jantaCarnivora"));
+			*/
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -19,6 +19,7 @@ public class MockCardapio {
 
 	private String date = new java.sql.Date(System.currentTimeMillis()).toString();
 	private BufferedReader br;
+	final int NUM_MAX_REFEICOES = 10;
 	
 	public Cardapio mock(String date_){
 		date = date_;
@@ -122,16 +123,17 @@ public class MockCardapio {
 		
 		// Criando o cafe da manha
 		List<Alimento> listCafe = new ArrayList<Alimento>();
-		n = random.nextInt(5);
-		while(n == 0){
-			n = random.nextInt(5);
+		n = random.nextInt(NUM_MAX_REFEICOES);
+		while(n <= 1){
+			n = random.nextInt(NUM_MAX_REFEICOES);
 		}
 		for(int i = 0; i < n; i++ ){
 			int num = random.nextInt(TAM);
 			listCafe.add(new Alimento(alimentos.get(num).split(",")[0], alimentos.get(num), alimentos.get(num)));
 		}
 		
-		refeicao = new Refeicao("Café da manhã");
+		refeicao = new Refeicao("Cafe da manha");
+		refeicao.setTipo(Cardapio.CAFE_DA_MANHA);
 
 		setRefeicao(refeicao, listCafe);
 
@@ -141,15 +143,16 @@ public class MockCardapio {
 		// Criando o almoco vegetariano
 		List<Alimento> listAlmocoVeg = new ArrayList<Alimento>();
 
-		n = random.nextInt(8);
-		while(n == 0){
-			n = random.nextInt(8);
+		n = random.nextInt(NUM_MAX_REFEICOES);
+		while(n <= 1){
+			n = random.nextInt(NUM_MAX_REFEICOES);
 		}
 		for(int i = 0; i < n; i++ ){
 			int num = random.nextInt(TAM);
 			listAlmocoVeg.add(new Alimento(alimentos.get(num).split(",")[0], alimentos.get(num), alimentos.get(num)));
 		}		
-		refeicao = new Refeicao("Almoço vegetariano");
+		refeicao = new Refeicao("Almoco vegetariano");
+		refeicao.setTipo(Cardapio.ALMOCO_VEGETARIANO);
 
 		setRefeicao(refeicao, listAlmocoVeg);
 
@@ -161,16 +164,17 @@ public class MockCardapio {
 		// Criando o almoco arnivoro
 		List<Alimento> listAlmocoCar = new ArrayList<Alimento>();
 
-		n = random.nextInt(10);
-		while(n == 0){
-			n = random.nextInt(10);
+		n = random.nextInt(NUM_MAX_REFEICOES);
+		while(n <= 1){
+			n = random.nextInt(NUM_MAX_REFEICOES);
 		}
 		for(int i = 0; i < n; i++ ){
 			int num = random.nextInt(TAM);
 			listAlmocoCar.add(new Alimento(alimentos.get(num).split(",")[0], alimentos.get(num), alimentos.get(num)));
 		}
 
-		refeicao = new Refeicao("Almoço Carnívoro");
+		refeicao = new Refeicao("Almoco Carnivoro");
+		refeicao.setTipo(Cardapio.ALMOCO_CARNIVORO);
 
 		setRefeicao(refeicao, listAlmocoCar);
 
@@ -181,9 +185,9 @@ public class MockCardapio {
 		// Criando jantar vegetariano
 		List<Alimento> listJantaVeg = new ArrayList<Alimento>();
 
-		n = random.nextInt(6);
-		while(n == 0){
-			n = random.nextInt(6);
+		n = random.nextInt(NUM_MAX_REFEICOES);
+		while(n <= 1){
+			n = random.nextInt(NUM_MAX_REFEICOES);
 		}
 		for(int i = 0; i < n; i++ ){
 			int num = random.nextInt(TAM);
@@ -191,6 +195,7 @@ public class MockCardapio {
 		}
 
 		refeicao = new Refeicao("janta Vegetariana");
+		refeicao.setTipo(Cardapio.JANTA_VEGETARIANA);
 
 		setRefeicao(refeicao, listJantaVeg);
 
@@ -200,16 +205,17 @@ public class MockCardapio {
 		// Criando janta carnivora
 		List<Alimento> listJantaCar = new ArrayList<Alimento>();
 
-		n = random.nextInt(7);
-		while(n == 0){
-			n = random.nextInt(7);
+		n = random.nextInt(NUM_MAX_REFEICOES);
+		while(n <= 1){
+			n = random.nextInt(NUM_MAX_REFEICOES);
 		}
 		for(int i = 0; i < n; i++ ){
 			int num = random.nextInt(TAM);
 			listJantaCar.add(new Alimento(alimentos.get(num).split(",")[0], alimentos.get(num), alimentos.get(num)));
 		}
 
-		refeicao = new Refeicao("janta Carnívora");
+		refeicao = new Refeicao("janta Carnivora");
+		refeicao.setTipo(Cardapio.JANTA_CARNIVORA);
 
 		setRefeicao(refeicao, listJantaCar);
 
@@ -258,7 +264,7 @@ public class MockCardapio {
 	
 	
 	public List<String> carregarNomesAlimentos2(){
-		String[] strings = {"Creme de leite, light (café ou mesa)",
+		String[] strings = {"Creme de leite, light café ou mesa",
 				"Refrigerante, dietético, cola, com aspartame, sem cafeína",
 				"Refrigerante, cola, sem cafeína",
 				"Refrigerante, cola, com alto teor de cafeína",
@@ -452,8 +458,8 @@ public class MockCardapio {
 				"Macarrão, caseiro, feito sem ovos, cozido",
 				"Macarrão, seco, enriquecido",
 				"Macarrão, cozido, enriquecido",
-				"Macarrão, proteína adicional, seco, enriquecido, (N X 5.70)",
-				"Macarrão, proteína adicional, cozido, enriquecido, (N X 5.70)",
+				"Macarrão, proteína adicional, seco, enriquecido, N X 5.70",
+				"Macarrão, proteína adicional, cozido, enriquecido, N X 5.70",
 				"Macarrão, vegetal, seco, enriquecido",
 				"Macarrão, vegetal, cozido, enriquecido",
 				"Macarrão, trigo integral, seco",
@@ -469,8 +475,8 @@ public class MockCardapio {
 				"Macarrão, japonês, somen, cozido",
 				"Macarrão, de arroz, seco",
 				"Macarrão, de arroz, cozido",
-				"Macarrão, proteína adicional, seco, enriquecido, (N X 6.25)",
-				"Macarrão, proteína adicional, cozido, enriquecido, (N X 6.25)",
+				"Macarrão, proteína adicional, seco, enriquecido, N X 6.25",
+				"Macarrão, proteína adicional, cozido, enriquecido, N X 6.25",
 				"Macarrão, ovo, cozido, enriquecido, com sal",
 				"Macarrão, cozido, não enriquecido",
 				"Macarrão, ovo, seco, não enriquecido",
@@ -491,12 +497,12 @@ public class MockCardapio {
 				"Pão, banana, caseiro, feito com margarina",
 				"Pão, fubá, mistura seca, enriquecido",
 				"Pão, fubá, mistura seca, preparada",
-				"Pão, fubá, caseiro, feito com leite desnatado (2%)gordura",
+				"Pão, fubá, caseiro, feito com leite desnatado 2%gordura",
 				"Pão, trigo-moído",
 				"Pão, ovo",
 				"Pão, ovo, tostado",
-				"Pão, francês ou vienense (inclui fermento)",
-				"Pão, francês ou vienense, tostado (inclui fermento)",
+				"Pão, francês ou vienense inclui fermento",
+				"Pão, francês ou vienense, tostado inclui fermento",
 				"Pão, italiano",
 				"Pão, grãos variados",
 				"Pão, grãos variados, tostado",
@@ -506,7 +512,7 @@ public class MockCardapio {
 				"Pão, aveia, tostado",
 				"Pão, sírio, branco, enriquecido",
 				"Pão, sírio, trigo integral",
-				"Pão, proteína (inclui glúten)",
+				"Pão, proteína inclui glúten",
 				"Pão, centeio integral",
 				"Pão, centeio integral, tostado",
 				"Pão, uva-passa, enriquecido",
@@ -527,7 +533,7 @@ public class MockCardapio {
 				"Pão, de forma, varejo",
 				"Pão, de forma, varejo, tostado",
 				"Pão, de forma, caseiro, feito com leite em pó sem gordura",
-				"Pão, de forma, caseiro, feito com leite semi-desnatado (2%) gordura",
+				"Pão, de forma, caseiro, feito com leite semi-desnatado 2% gordura",
 				"Pão, trigo integral, varejo",
 				"Pão, trigo integral, varejo, tostado",
 				"Pão, trigo integral, receita caseira",
@@ -555,10 +561,10 @@ public class MockCardapio {
 				"Pãozinho doce, canela, varejo com uva passa",
 				"Pãozinho doce, canela, farinha refrigerada, glaceado",
 				"Pãozinho doce, canela, farinha refrigerada, glaceado, assado",
-				"Pão, prteína, tostado (inclui gluten)",
+				"Pão, prteína, tostado inclui gluten",
 				"Pão, farelo de arroz, tostado",
 				"Pão, germe de trigo, tostado",
-				"Pãozinho, refeição, natural, caseiro, feito com leite desnatado (2%)gordura",
+				"Pãozinho, refeição, natural, caseiro, feito com leite desnatado 2%gordura",
 				"Pão, fubá, mistura seca, não enriquecido",
 				"Pão, sírio, branco, não enriquecido",
 				"Pão, uva passa, não enriquecido",
@@ -574,11 +580,11 @@ public class MockCardapio {
 				"Queijo, mozarela, leite semi-desnatado, baixa umidade",
 				"Queijo, ricota, leite integral",
 				"Queijo, ricota, leite semi-desnatado",
-				"Creme de leite, \"half and half\"",
-				"Creme de leite, light (café ou mesa)",
+				"Creme de leite, half and half",
+				"Creme de leite, light café ou mesa",
 				"Creme de leite azedo, semi-desnatado, cultivado",
 				"Creme de leite azedo, cultivado",
-				"Gemada (Eggnog - ovos, açucar, leite, chantilly, uísque ou rum ou licor)",
+				"Gemada Eggnog - ovos, açucar, leite, chantilly, uísque ou rum ou licor",
 				"Leite, fluido, completado, com mistura de óleos vegetais hidrogenados",
 				"Leite, fluido, completado, com ácido láurico",
 				"Cobertura para sobremesa, pó, 42.5 g com 120 ml de leite",
@@ -593,9 +599,9 @@ public class MockCardapio {
 				"Leite, vaca, magro, fluido, 1% de gordura, com vit A",
 				"Leite, vaca, magro, fluido, 1% de gordura, reconstituído sem gordura&vit A",
 				"Leite, vaca, magro, fluido, 1% de gordura, fortificado com proteina, com vit A",
-				"Leite, vaca, sem gordura, fluido, com vit A (desnatado)",
-				"Leite, vaca, sem gordura, fluido, reconstituído sem gordura&vit A (desnatado)",
-				"Leite, vaca, sem gordura, fluido, fortificado com proteina, com vit A (desnatado)",
+				"Leite, vaca, sem gordura, fluido, com vit A desnatado",
+				"Leite, vaca, sem gordura, fluido, reconstituído sem gordura&vit A desnatado",
+				"Leite, vaca, sem gordura, fluido, fortificado com proteina, com vit A desnatado",
 				"Leite, leitelho, fluido, cultivado, magro",
 				"Leite, vaca, hipossódico, fluido",
 				"Leite, vaca, pó, integral",
@@ -619,7 +625,7 @@ public class MockCardapio {
 				"Soro do leite, doce, fluido",
 				"Soro do leite, doce, pó",
 				"Iogurte, natural, leite integral, 8 g proteína por 227 g",
-				"Leite, sem gordura, fluido, sem vit A (desnatado)",
+				"Leite, sem gordura, fluido, sem vit A desnatado",
 				"Leite, semi-desnatado, fluido, 2% gordura, reconstituído sem gordura, sem vit A",
 				"Leite, lata, evaporado, com vit A",
 				"Leite, pó, sem gordura, com vit A",
@@ -700,12 +706,12 @@ public class MockCardapio {
 				"Biscuits, natural ou soro do leite, farinha refrigerada, alto teor em gordura",
 				"Biscuits, natural ou soro do leite, farinha refrigerada, alto teor em gordura, assado",
 				"Biscuits, natural ou soro do leite, receita caseira",
-				"Pão, fubá, caseiro, feito com leite desnatado (2%)gordura",
+				"Pão, fubá, caseiro, feito com leite desnatado 2%gordura",
 				"Pão, de forma, caseiro, feito com leite em pó sem gordura",
-				"Pão, de forma, caseiro, feito com leite semi-desnatado (2%) gordura",
+				"Pão, de forma, caseiro, feito com leite semi-desnatado 2% gordura",
 				"Bolacha, leite",
 				"Panqueca, soro do leite, receita caseira",
-				"Pãozinho, refeição, natural, caseiro, feito com leite desnatado (2%)gordura",
+				"Pãozinho, refeição, natural, caseiro, feito com leite desnatado 2%gordura",
 				"Barra de granola, mole, cobertura, chocolate ao leite, pingos de chocolate",
 				"Barra de granola, mole, cobertura, chocolate ao leite, creme de amendoim",
 				"Doce, chocolate ao leite",
@@ -717,7 +723,7 @@ public class MockCardapio {
 				"Doce, amendoim coberto de chocolate ao leite",
 				"Doce, uva-passa coberta de chocolate ao leite",
 				"Doce, chocolate ao leite, com amêndoas",
-				"Doce, M&M MARS, \"M&M'S\" mini chocolate ao leite",
+				"Doce, M&M MARS, M&MS mini chocolate ao leite",
 				"Sobremesas, pudim de ovos, mistura seca, preparo com leite integral",
 				"Sobremesas, pudim, chocolate, mistura seca, normal, preparo com leite integral",
 				"Sobremesas, pudim, chocolate, mistura seca, normal, preparo com leite desnatado",
@@ -745,18 +751,18 @@ public class MockCardapio {
 				"Sopa, ervilha seca, com presunto, lata, preparo com igual volume de água, varejo",
 				"Presunto, pedaços, lata",
 				"Presunto, pedaços, não enlatado",
-				"Presunto, fatiado, extra magro, (aprox 5% gordura)",
-				"Presunto, fatiado, normal (aprox 11% gordura)",
+				"Presunto, fatiado, extra magro, aprox 5% gordura",
+				"Presunto, fatiado, normal aprox 11% gordura",
 				"Presunto, picado",
 				"Pasta de presunto",
 				"Pasta ou bastão de presunto e queijo",
 				"Pasta de presunto e queijo",
-				"Porco, curado, presunto, sem osso, extra magro (aprox 5% gordura), assado",
-				"Porco, curado, presunto, sem osso, normal (aprox 11% gordura), assado",
-				"Porco, curado, presunto, extra magro (aprox 4% gordura), lata, sem aquecer",
-				"Porco, curado, presunto, extra magro (aprox 4% gordura), lata, assado",
-				"Porco, curado, presunto, normal (aprox 13% gordura), lata, sem aquecer",
-				"Porco, curado, presunto, normal (aprox 13% gordura), lata, assado",
+				"Porco, curado, presunto, sem osso, extra magro aprox 5% gordura, assado",
+				"Porco, curado, presunto, sem osso, normal aprox 11% gordura, assado",
+				"Porco, curado, presunto, extra magro aprox 4% gordura, lata, sem aquecer",
+				"Porco, curado, presunto, extra magro aprox 4% gordura, lata, assado",
+				"Porco, curado, presunto, normal aprox 13% gordura, lata, sem aquecer",
+				"Porco, curado, presunto, normal aprox 13% gordura, lata, assado",
 				"Porco, curado, presunto, inteiro, carne magra e gordura, sem aquecer",
 				"Porco, curado, presunto, inteiro, carne magra e gordura, assado",
 				"Porco, curado, presunto, inteiro, só a parte magra, sem aquecer",
@@ -963,9 +969,9 @@ public class MockCardapio {
 				"Sopa, carne com cogumelo, lata, preparo com igual volume de água, varejo",
 				"Sopa, galinha com cogumelo, lata, preparo com igual volume de água, varejo",
 				"Sopa, tomate, lata, preparo com igual volume de água, varejo",
-				"Maçã, desidratada (baixa umidade), sulfurada, ensopado",
-				"Damasco, desidratado (baixa umidade), sulfurada, ensopado",
-				"Pêssego, desidratado (baixa umidade), sulfurada, ensopado",
+				"Maçã, desidratada baixa umidade, sulfurada, ensopado",
+				"Damasco, desidratado baixa umidade, sulfurada, ensopado",
+				"Pêssego, desidratado baixa umidade, sulfurada, ensopado",
 				"Tomate, vermelho, maduro, lata, ensopado",
 				"Tomate, vermelho, maduro, cozido, ensopado",
 				"Caça, coelho, criação, cozido, ensopado",

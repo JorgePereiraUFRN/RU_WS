@@ -1,5 +1,7 @@
 package br.ufrn.ru_ufrn.resources;
 
+import java.util.Random;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -38,6 +40,17 @@ public class CardapioResource {
 		
 		return new MockCardapio().mock(date);
 	}
+	
+	
+	@GET
+	@Path("alterado/{date}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String cardapioAlterado(@PathParam("date")String date) {		
+		Random r = new Random();
+		int n = r.nextInt();
+		return (n %2 == 0)?"true":"false";
+	}
+	
 	
 	
 	
